@@ -11,6 +11,8 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 """
 
 from pathlib import Path
+import django_heroku
+import dj_database_url
 import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -26,7 +28,7 @@ SECRET_KEY = 'django-insecure-pmi_$^l*&o0-haohdhl%(4il*n2k-yeza7pi_5iae&e-c5nh*y
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['.vercel.app' , '127.0.0.1']
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -87,9 +89,9 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'railway',
         'USER':'postgres',
-        'PASSWORD':'UTvTDuGfrHzqTcyWOnHMzyVYkVwQHrAV',
-        'HOST':'monorail.proxy.rlwy.net',
-        'PORT':'18003',
+        'PASSWORD':'xaGJdYmUGDiWYqtDVwXfrCABBeOnCUXr',
+        'HOST':'roundhouse.proxy.rlwy.net',
+        'PORT':'48259',
     }
 }
 
@@ -127,7 +129,9 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
-STATIC_URL = 'static/'
+STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR,'staticfiles')
+STATICFILES_DIRS= (os.path.join(BASE_DIR,'static'),)
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
@@ -135,12 +139,13 @@ STATIC_URL = 'static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # settings.py
 # The following line is typically used in development only
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+# BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # STATIC_URL = '/static/'
 # STATICFILES_DIRS = [
 #     os.path.join(BASE_DIR, 'static'),
 # ]
 
-STATICFILES_DIRS= os.path.join(BASE_DIR,"static"),
-STATIC_ROOT = os.path.join(BASE_DIR,'staticfiles_build','static')
+
+# django_heroku.settings(locals())
+
